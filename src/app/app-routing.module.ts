@@ -21,6 +21,20 @@ const routes: Routes = [
         (m) => m.ExtraversionModule
       ),
   },
+  {
+    path: 'agreeableness',
+    loadChildren: () =>
+      import('./pages/agreeableness/agreeableness.module').then(
+        (m) => m.AgreeablenessModule
+      ),
+  },
+  {
+    path: 'neuroticism',
+    loadChildren: () =>
+      import('./pages/neuroticism/neuroticism.module').then(
+        (m) => m.NeuroticismModule
+      ),
+  },
 ];
 
 @NgModule({
