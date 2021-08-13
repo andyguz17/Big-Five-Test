@@ -1,0 +1,22 @@
+.body-container {
+  color: #012840;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: bold;
+  gap: 10px;
+  margin: 0px 220px;
+
+  .item-header {
+    color: #2999a6;
+    display: flex;
+    gap: 50px;
+    margin-left: 5px;
+  }
+
+  .wrap {
+    align-content: center;
+    display: grid;
+    grid-template-columns: 650px 1fr;
+  }
+}
