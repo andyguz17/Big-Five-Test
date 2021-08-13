@@ -7,6 +7,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/openness/openness.module').then((m) => m.OpennessModule),
   },
+  {
+    path: 'conscientiousness',
+    loadChildren: () =>
+      import('./pages/conscientiousness/conscientiousness.module').then(
+        (m) => m.ConscientiousnessModule
+      ),
+  },
+  {
+    path: 'extraversion',
+    loadChildren: () =>
+      import('./pages/extraversion/extraversion.module').then(
+        (m) => m.ExtraversionModule
+      ),
+  },
 ];
 
 @NgModule({

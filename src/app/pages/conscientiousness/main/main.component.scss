@@ -1,0 +1,28 @@
+.outer-box {
+  align-items: center;
+  display: flex;
+  gap: 50px;
+  margin: 50px 50px 20px 50px;
+
+  img {
+    width: 287px;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+
+    .d-title {
+      color: #2d2d2d;
+      font-weight: 900;
+      font-size: 48px;
+    }
+
+    .d-body {
+      color: #6d6d6d;
+      font-size: 18px;
+      font-weight: 600;
+      max-width: 680px;
+    }
+  }
+}
