@@ -1,0 +1,24 @@
+.selector-box {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+
+  .radio-b {
+    background-color: #c4c4c4;
+    border-radius: 25px;
+    height: 30px;
+    width: 30px;
+
+    &:hover {
+      background-color: #d4d4d4;
+    }
+  }
+
+  .inner-dot {
+    background-color: rgb(58, 58, 58);
+    border-radius: 15px;
+    height: 16px;
+    margin: 7px;
+    width: 16px;
+  }
+}
