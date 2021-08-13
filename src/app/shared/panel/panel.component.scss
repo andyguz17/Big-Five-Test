@@ -1,0 +1,46 @@
+.panel {
+  background-color: rgb(230, 230, 230);
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  width: 280px;
+
+  .o-wrap {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin: 15px 40px 15px;
+
+    .circle {
+      background-color: #012840;
+      border-radius: 5px;
+      height: 10px;
+      width: 10px;
+    }
+
+    .option {
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #012840;
+    }
+  }
+
+  .c-button {
+    align-items: center;
+    background-color: #2999A6;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 45px;
+    justify-content: center;
+    margin: 0px 75px;
+    width: 74px;
+
+    &:hover{
+      background-color: #7ED9D9;
+    }
+  }
+}
