@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'agreeableness',
+    pathMatch: 'full',
+  },
+  {
     path: 'openness',
     loadChildren: () =>
       import('./pages/openness/openness.module').then((m) => m.OpennessModule),

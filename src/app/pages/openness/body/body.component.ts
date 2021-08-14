@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { COMPLETE, OPN } from 'src/app/shared/global';
+import { LocalStorageService } from 'src/app/shared/local-storage.service';
 import { questions } from '../data';
 
 @Component({
@@ -13,7 +14,10 @@ export class BodyComponent implements OnInit {
   qCounter = 0;
   initialTime: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private storageService: LocalStorageService
+  ) {}
 
   setQ(q: number, decision: number) {
     console.log(`Answer to Q${q + 1} is ${decision}`);
@@ -25,7 +29,7 @@ export class BodyComponent implements OnInit {
 
   goNext() {
     console.log(this.qCounter);
-    
+
     if (this.qCounter <= 8) {
       var newTime = performance.now();
       var time = newTime - this.initialTime;
@@ -33,7 +37,7 @@ export class BodyComponent implements OnInit {
       console.log(time);
       this.qCounter++;
     } else if (this.qCounter === 9) {
-      window.localStorage.setItem(OPN, COMPLETE);
+      this.storageService.setItem(OPN, COMPLETE);
       //FInish test
     }
   }
