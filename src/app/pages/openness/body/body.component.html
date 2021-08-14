@@ -1,52 +1,14 @@
 <div class="body-container">
-  <div class="wrap">
-    <div></div>
-    <div class="item-header">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
+  <div class="g-element">
+    <div *ngFor="let question of data; let i = index" class="q-container">
+      <div *ngIf="qCounter === i" class="q-inner">
+        <div class="q-text">{{i+1}}.&nbsp; {{question}}</div>
+        <app-selector (select)="setQ(i, $event)"></app-selector>
+        <div class="navigation">
+          <div (click)="goBack()" class="q-button">Back</div>
+          <div (click)="goNext()" class="q-button">Next</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="wrap">
-    <div>- I have a rich vocabulary.</div>
-    <app-selector (select)="setQ(1, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I have difficulty understanding abstract ideas.</div>
-    <app-selector (select)="setQ(2, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I have a vivid imagination.</div>
-    <app-selector (select)="setQ(3, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I am not interested in abstract ideas.</div>
-    <app-selector (select)="setQ(4, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I have excellent ideas.</div>
-    <app-selector (select)="setQ(5, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I do not have a good imagination.</div>
-    <app-selector (select)="setQ(6, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I am quick to understand things.</div>
-    <app-selector (select)="setQ(7, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I use difficult words.</div>
-    <app-selector (select)="setQ(8, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I spend time reflecting on things.</div>
-    <app-selector (select)="setQ(9, $event)"></app-selector>
-  </div>
-  <div class="wrap">
-    <div>- I am full of ideas.</div>
-    <app-selector (select)="setQ(10, $event)"></app-selector>
   </div>
 </div>

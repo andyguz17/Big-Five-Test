@@ -7,16 +7,44 @@
   gap: 10px;
   margin: 0px 220px 50px 220px;
 
-  .item-header {
-    color: #2999a6;
-    display: flex;
-    gap: 50px;
-    margin-left: 5px;
-  }
-
-  .wrap {
-    align-content: center;
+  .g-element {
     display: grid;
-    grid-template-columns: 650px 1fr;
+
+    .q-container {
+      grid-area: 1 / 1 / 2 / 2;
+
+      .q-inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .q-text { 
+        font-size: 24px;
+      }
+
+      .q-button {
+        align-items: center;
+        background-color: #2999a6;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        font-size: 18px;
+        height: 45px;
+        justify-content: center;
+        margin: 0px 75px;
+        width: 74px;
+
+        &:hover {
+          background-color: #7ed9d9;
+        }
+      }
+
+      .navigation {
+        display: flex;
+      }
+    }
   }
 }
