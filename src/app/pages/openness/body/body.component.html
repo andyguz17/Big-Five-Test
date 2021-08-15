@@ -5,8 +5,8 @@
         <div class="q-text">{{i+1}}.&nbsp; {{question}}</div>
         <app-selector (select)="setQ($event)"></app-selector>
         <div class="navigation">
-          <div (click)="goBack()" class="q-button">Back</div>
-          <div (click)="goNext()" class="q-button">{{ qCounter === 9 ? 'Finish': 'Next'}}</div>
+          <!-- <div (click)="goBack()" class="q-button">Back</div> -->
+          <div [ngClass]="answer === 0 && 'disable'" (click)="goNext()" class="q-button">{{ qCounter === 9 ? 'Finish': 'Next'}}</div>
         </div>
       </div>
     </div>

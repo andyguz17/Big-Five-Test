@@ -13,7 +13,7 @@ export class BodyComponent implements OnInit {
   data = questions;
   qCounter = 0;
   initialTime: any;
-  answer!: number;
+  answer = 0;
 
   constructor(
     private fillService: FillDataService,
@@ -29,17 +29,20 @@ export class BodyComponent implements OnInit {
   }
 
   goNext() {
-    var newTime = performance.now();
-    var time = newTime - this.initialTime;
-    this.initialTime = newTime;
-    this.fillService.setQuestion('OPN', this.qCounter + 1, this.answer);
-    this.fillService.setTime('OPN', this.qCounter + 1, time);
+    if (this.answer !== 0) {
+      var newTime = performance.now();
+      var time = newTime - this.initialTime;
+      this.initialTime = newTime;
+      this.fillService.setQuestion('OPN', this.qCounter + 1, this.answer);
+      this.fillService.setTime('OPN', this.qCounter + 1, Math.round(time));
+      this.answer = 0;
 
-    if (this.qCounter <= 8) {
-      this.qCounter++;
-    } else if (this.qCounter === 9) {
-      this.storageService.setItem(OPN, COMPLETE);
-      this.fillService.sendDict();
+      if (this.qCounter <= 8) {
+        this.qCounter++;
+      } else if (this.qCounter === 9) {
+        this.storageService.setItem(OPN, COMPLETE);
+        this.fillService.sendDict();
+      }
     }
   }
 
