@@ -1,6 +1,6 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FillDataService } from 'src/app/services/fill-data.service';
 import { COMPLETE, EST } from 'src/app/shared/global';
 import { LocalStorageService } from 'src/app/shared/local-storage.service';
 import { questions } from '../data';
@@ -14,14 +14,16 @@ export class BodyComponent implements OnInit {
   data = questions;
   qCounter = 0;
   initialTime: any;
+  answer!: number;
 
   constructor(
     private router: Router,
+    private fillService: FillDataService,
     private storageService: LocalStorageService
   ) {}
 
-  setQ(q: number, decision: number) {
-    console.log(`Answer to Q${q} is ${decision}`);
+  setQ(decision: number) {
+    this.answer = decision;
   }
 
   ngOnInit(): void {
@@ -29,13 +31,13 @@ export class BodyComponent implements OnInit {
   }
 
   goNext() {
-    console.log(this.qCounter);
+    var newTime = performance.now();
+    var time = newTime - this.initialTime;
+    this.initialTime = newTime;
+    this.fillService.setQuestion('EST', this.qCounter + 1, this.answer);
+    this.fillService.setTime('EST', this.qCounter + 1, time);
 
     if (this.qCounter <= 8) {
-      var newTime = performance.now();
-      var time = newTime - this.initialTime;
-      this.initialTime = newTime;
-      console.log(time);
       this.qCounter++;
     } else if (this.qCounter === 9) {
       this.storageService.setItem(EST, COMPLETE);
