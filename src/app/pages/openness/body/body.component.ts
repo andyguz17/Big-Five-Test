@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FillDataService } from 'src/app/services/fill-data.service';
 import { COMPLETE, OPN } from 'src/app/shared/global';
@@ -10,13 +11,16 @@ import { questions } from '../data';
   styleUrls: ['./body.component.scss'],
 })
 export class BodyComponent implements OnInit {
+  Countries = 'https://restcountries.eu/rest/v2/alpha/';
   data = questions;
   qCounter = 0;
   initialTime: any;
   answer = 0;
+  country = '';
 
   constructor(
     private fillService: FillDataService,
+    private http: HttpClient,
     private storageService: LocalStorageService
   ) {}
 
@@ -41,7 +45,11 @@ export class BodyComponent implements OnInit {
         this.qCounter++;
       } else if (this.qCounter === 9) {
         this.storageService.setItem(OPN, COMPLETE);
-        this.fillService.sendDict();
+        this.fillService.sendDict().subscribe((data: string) => {
+          this.http.get(`${this.Countries}${data}`).subscribe((data: any) => {            
+            this.country = data.name;
+          });
+        });
       }
     }
   }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,8 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class FillDataService {
   dict: any = {};
+  API = 'https://big-five-api-oxf3u.ondigitalocean.app/surveys/';
+  
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   setQuestion(code: string, num: number, value: number) {
     this.dict[`${code}${num}`] = value;
@@ -17,6 +20,10 @@ export class FillDataService {
   }
 
   sendDict() {
-    console.log(this.dict);
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(this.dict);
+    return this.http.post(this.API, body, {
+      headers,
+    });
   }
 }

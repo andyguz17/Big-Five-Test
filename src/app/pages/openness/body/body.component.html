@@ -1,14 +1,25 @@
 <div class="body-container">
   <div class="g-element">
-    <div *ngFor="let question of data; let i = index" class="q-container">
-      <div *ngIf="qCounter === i" class="q-inner">
-        <div class="q-text">{{i+1}}.&nbsp; {{question}}</div>
-        <app-selector (select)="setQ($event)"></app-selector>
-        <div class="navigation">
-          <!-- <div (click)="goBack()" class="q-button">Back</div> -->
-          <div [ngClass]="answer === 0 && 'disable'" (click)="goNext()" class="q-button">{{ qCounter === 9 ? 'Finish': 'Next'}}</div>
+    <div *ngIf="country === ''; else prediction">
+      <div *ngFor="let question of data; let i = index" class="q-container">
+        <div *ngIf="qCounter === i" class="q-inner">
+          <div class="q-text">{{i+1}}.&nbsp; {{question}}</div>
+          <app-selector (select)="setQ($event)"></app-selector>
+          <div class="navigation">
+            <!-- <div (click)="goBack()" class="q-button">Back</div> -->
+            <div [ngClass]="answer === 0 && 'disable'" (click)="goNext()" class="q-button">{{ qCounter === 9 ? 'Finish':
+              'Next'}}</div>
+          </div>
         </div>
       </div>
     </div>
+    <ng-template #prediction>
+      <div class="goodbye">
+        <div>Based on your answers we did a little prediction on where you come from:</div>
+        <div class="prediction">{{country}}</div>
+        <div>Anyway this has only about 20% of accuracy, with more data we can get better results</div>
+        <div>Thanks for participating!!</div>
+      </div>
+    </ng-template>
   </div>
 </div>

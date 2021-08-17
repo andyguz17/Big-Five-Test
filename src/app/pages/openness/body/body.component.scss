@@ -51,4 +51,17 @@
       }
     }
   }
+
+  .goodbye {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .prediction {
+      font-size: 24px !important;
+      color: #2999a6 !important;
+    }
+  }
 }
